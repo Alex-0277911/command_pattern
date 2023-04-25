@@ -1,0 +1,38 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "command_pattern::command_pattern.dart::Command" {
+  +void execute()
+}
+
+class "command_pattern::command_pattern.dart::Light" {
+  +void turnOn()
+  +void turnOff()
+}
+
+class "command_pattern::command_pattern.dart::TurnOnCommand" {
+  -Light _light
+  +void execute()
+}
+
+"command_pattern::command_pattern.dart::TurnOnCommand" o-- "command_pattern::command_pattern.dart::Light"
+"command_pattern::command_pattern.dart::Command" <|-- "command_pattern::command_pattern.dart::TurnOnCommand"
+
+class "command_pattern::command_pattern.dart::TurnOffCommand" {
+  -Light _light
+  +void execute()
+}
+
+"command_pattern::command_pattern.dart::TurnOffCommand" o-- "command_pattern::command_pattern.dart::Light"
+"command_pattern::command_pattern.dart::Command" <|-- "command_pattern::command_pattern.dart::TurnOffCommand"
+
+class "command_pattern::command_pattern.dart::RemoteControl" {
+  -Command _command
+  +void setCommand()
+  +void pressButton()
+}
+
+"command_pattern::command_pattern.dart::RemoteControl" o-- "command_pattern::command_pattern.dart::Command"
+
+
+@enduml
