@@ -12,7 +12,7 @@ abstract class Command {
   void execute();
 }
 
-// Receiver class
+// Приймач
 class Light {
   void turnOn() {
     print('Light turned on');
